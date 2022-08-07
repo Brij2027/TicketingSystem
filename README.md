@@ -10,3 +10,5 @@ Steps to run:-
 5. make a .env file in the root of the project and take reference from .env.example
 6. run all migrations [python manage.py migrate]
 7. run the development server [python manage.py runserver]
+
+note:- [the tokens for request are prefixed by "Token" not "Bearer"]
