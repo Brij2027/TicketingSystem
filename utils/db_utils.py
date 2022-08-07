@@ -44,9 +44,23 @@ class Ticket:
         return Ticket.collection_name.insert_one(data).inserted_id 
 
     @staticmethod
+    def retrieve_ticket_detail(data):
+        Ticket.create_ticket_table()
+        return Ticket.collection_name.find_one(data)
+
+    @staticmethod
     def retrieve_ticket_details(data):
         Ticket.create_ticket_table()
         return list(Ticket.collection_name.find(data))
 
+    @staticmethod
+    def update_ticket_details(old_data, new_data):
+        Ticket.create_ticket_table()
+        Ticket.collection_name.update_one(old_data, new_data)
+
+    @staticmethod
+    def delete_ticket(data):
+        Ticket.create_ticket_table()
+        Ticket.collection_name.delete_one(data)
 
 

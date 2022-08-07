@@ -9,9 +9,15 @@ class UrlUtils:
     TICKET_CREATE = "ticket_create"
     TICKET_LIST = "ticket_list"
     TICKET_GET = "ticket_get"
+    TICKET_CLOSE = "ticket_close"
+    TICKET_DELETE = "ticket_delete"
 
 class Utils:
 
     @staticmethod
     def generate_random_password():
         return BaseUserManager().make_random_password(10)
+
+class Logger:
+    log_file = "ticketingsystem.log"
+

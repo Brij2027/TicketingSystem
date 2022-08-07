@@ -10,7 +10,7 @@ from django.contrib.auth.models import User as auth_user
 import json
 from utils.db_utils import Ticket, User
 from utils.utils import Utils
-from ticketingsystem.permissions import IsAdmin
+from ticketingsystem.permissions import CanCloseTicket, IsAdmin
 
 
 # class CustomToken(TokenAuthentication):
@@ -59,3 +59,22 @@ class TicketView(APIView):
         data.update({"priority":priority}) if priority else ""
         result = Ticket.retrieve_ticket_details(data)
         return Response(result, status=200)
+
+class TicketCloseView(APIView):
+    permission_classes = [IsAuthenticated, CanCloseTicket]
+
+    def post(self, request: Request, ticketID):
+        ticket = Ticket.retrieve_ticket_detail({"_id":ticketID, })
+        olddata = {"_id":ticketID,"status": "close"}
+        newdata = {"_id":ticketID,"$set": {"status": ticket.get("status")}}
+
+        Ticket.update_ticket_details(old_data=olddata, new_data=newdata)
+        return Response({"success":"ticket updated successfully"}, status=status.HTTP_200_OK)
+
+
+class TicketDeleteView(APIView):
+    permission_classes = [IsAdmin]
+
+    def post(self, request: Request, ticketID):
+        Ticket.delete_ticket({"_id":ticketID})
+        return Response(status=status.HTTP_204_NO_CONTENT)
