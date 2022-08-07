@@ -1,1 +1,1 @@
-[2022-08-07 14:11:06.622272] [] - request-> <WSGIRequest: GET '/home/tickets/all/'>[2022-08-07 14:11:06.661878] [chitar] - response-> <HttpResponse status_code=500, "text/html; charset=utf-8">
+[2022-08-07 14:11:06.622272] [] - request-> <WSGIRequest: GET '/home/tickets/all/'>[2022-08-07 14:11:06.661878] [chitar] - response-> <HttpResponse status_code=500, "text/html; charset=utf-8">[2022-08-07 14:22:25.448900] [] - request-> <WSGIRequest: GET '/home/tickets/all/'>[2022-08-07 14:22:25.449853] [] - response-> <Response status_code=401, "application/json">
